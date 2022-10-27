@@ -25,8 +25,8 @@ public class Main {
     public static void main(String[] args) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("user-data-dir=C:/Users/KornedBeef/AppData/Local/Google/Chrome/User Data");
-        options.addArguments("user-data-dir=" + PropertiesCache.getInstance().getProperty("CHROME_USER_DATA_DIR"));
+        String chromeUserDirectoryPath = System.getProperty("user.home");
+        options.addArguments("user-data-dir=" + chromeUserDirectoryPath + PropertiesCache.getInstance().getProperty("CHROME_USER_DATA_DIR"));
         ChromeDriver driver = new ChromeDriver(options);
 
         System.out.println("Opening Whatsapp Web....");
