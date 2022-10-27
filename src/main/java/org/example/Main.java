@@ -2,6 +2,7 @@ package org.example;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.example.helper.MessageTemplate;
+import org.example.helper.PropertiesCache;
 import org.example.helper.RecipientsLoader;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -24,8 +25,8 @@ public class Main {
     public static void main(String[] args) {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("user-data-dir=C:/Users/KornedBeef/tmp");
-        options.addArguments("user-data-dir=C:/Users/KornedBeef/AppData/Local/Google/Chrome/User Data");
+//        options.addArguments("user-data-dir=C:/Users/KornedBeef/AppData/Local/Google/Chrome/User Data");
+        options.addArguments("user-data-dir=" + PropertiesCache.getInstance().getProperty("CHROME_USER_DATA_DIR"));
         ChromeDriver driver = new ChromeDriver(options);
 
         System.out.println("Opening Whatsapp Web....");
@@ -36,11 +37,6 @@ public class Main {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("side")));
         System.out.println("Scanned the Barcode and loaded the web WhatsApp....");
 
-//        List<String> SendToList = new ArrayList<>();
-//        SendToList.add("6282113084939");
-//        SendToList.add("6289658896504");
-//        SendToList.add("628119202304");
-//        SendToList.add("628118692304");
         List<String[]> recipientsList;
         try {
             recipientsList = RecipientsLoader.readData();
@@ -74,11 +70,6 @@ public class Main {
             driver.switchTo().activeElement().sendKeys("test");
 
             wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@title=\"Type a message\"]")));
-
-//            new Actions(driver)
-//                    .sendKeys(message)
-//                    .sendKeys(ENTER)
-//                    .perform();
 
             Actions actions = new Actions(driver);
             for (String line : messageTemplate) {
