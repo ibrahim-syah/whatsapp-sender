@@ -1,6 +1,0 @@
-# windows
-CHROME_USER_DATA_DIR = /AppData/Local/Google/Chrome/User Data
-# mac
-#CHROME_USER_DATA_DIR = /Library/Application Support/Google/Chrome/
-# linux
-#CHROME_USER_DATA_DIR = /.config/google-chrome/
