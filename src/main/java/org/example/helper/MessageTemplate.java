@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class MessageTemplate {
+
     public static ArrayList<String> readData() throws IOException {
         String filename = "message_template.txt";
         String pathToFile = System.getProperty("user.dir") + File.separator + filename;
