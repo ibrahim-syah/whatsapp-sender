@@ -2,4 +2,4 @@
 .idea/
 /recipients.csv
 /message_template.txt
-/src/main/resources/config.properties.example
+/src/main/resources/config.properties
