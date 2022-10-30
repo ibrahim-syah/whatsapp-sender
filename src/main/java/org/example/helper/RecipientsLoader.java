@@ -5,9 +5,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RecipientsLoader {
-    public static List<String[]> readData() throws IOException {
-        String file = "recipients.csv";
-        String pathToFile = System.getProperty("user.dir") + File.separator + file;
+    private String pathToFile;
+    private String filename;
+    public RecipientsLoader(boolean _isJar, String _filename) {
+        filename = _filename;
+        if (_isJar) {
+            pathToFile = "./" + _filename;
+        } else {
+            pathToFile = System.getProperty("user.dir") + File.separator + filename;
+        }
+    }
+    public List<String[]> readData() throws IOException {
         List<String[]> content = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(pathToFile))) {
             String line;
