@@ -1,6 +1,9 @@
 # whatsapp-sender
 A simple Whatsapp Web selenium bot that sends message to a list of recipients
 
+# Prerequisite
+Your machine needs to have Java 17 Installed
+
 # Usage
 1. Download the latest archived release to your computer
 2. Unzip the archive and open the contained folder
